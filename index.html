@@ -1,542 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALEXCHUA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Basic Layout</title>
+  <style>
+    /* Styles for the basic layout */
+    #basicLayout {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Content section styling */
+    .content {
+      background: linear-gradient(to right, #bbb, #fff);
+      flex-grow: 1;
+      padding: 16px;
+    }
+    /* Footer section styling */
+    .footer {
+      background-color: #efefef;
+      padding: 8px;
+      text-align: center;
+    }
 
-    <script src="js/index.js"></script>
-    <link rel="stylesheet" href="./css/alex.css">
+    /* New JavaScript-triggered Theme */
+    body[data-theme='dark'] {
+      background-color: #121212;
+      color: #fff;
+    }
 
+    /* Add your requested styles below */
+    .ui-card.ui-layer-3.active-card {
+      background-color: #1F202A;
+      padding: 20px 70px 20px 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
 
-    <link rel="image_src" href="images/avatar0.jpg" s/>
+    }
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    h2.ui-title.text-sec-headline-xs {
+      color: #C9C9CF;
+      font-size: 12px;
+      font-family: Satoshi, "Open Sans", Arial, sans-serif;
+      margin: 0px 0px 15px;
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    }
 
-    <link rel="icon" type="image/png" href="./images/logo1.png" sizes="16x16">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    h3#base-card-1.base-card-title {
+      color: #D6D7E4;
+      font-size: 22px;
+      font-family: Satoshi, "Open Sans", sans-serif;
+      margin: 0px 0px 15px;
+    }
+
+    div.progress-filler {
+      background-color: #F7F8FD;
+    }
+
+    span.percentage {
+      color: #F7F8FD;
+      font-size: 13px;
+      font-family: Satoshi, "Open Sans", Arial, sans-serif;
+    }
+
+    span.points-left {
+      color: #C1C2D6;
+      font-size: 13px;
+      font-family: Satoshi, "Open Sans", sans-serif;
+    }
+
+    a#base-card-1.link.ui-btn.ui-btn-normal.ui-btn-large.ul-btn-primary.ui-btn-link {
+      background-color: #20D761;
+      margin: 15px 0px 0px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    span.ui-text {
+      color: #121418;
+      font-size: 14px;
+      font-family: Satoshi, "Open Sans", sans-serif;
+
+    }
+
+    /* Ensure responsiveness */
+    @media (max-width: 768px) {
+      .ui-card.ui-layer-3.active-card {
+        padding: 20px 20px;
+      }
+
+      h2.ui-title.text-sec-headline-xs,
+      h3#base-card-1.base-card-title {
+        font-size: 14px;
+      }
+
+      a#base-card-1.link.ui-btn.ui-btn-normal.ui-btn-large.ul-btn-primary.ui-btn-link {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
-
-<body onload="onLoadPortfolio(); loadImage()">
-
-    <div w3-include-html="navi/toolbar.html"></div>
-
-
-    <div class="first-section">
-
-        <a id="home"></a>
-
-        <div class="container" id="front-grid">
-            <div class="row">
-                <div class="col-sm ">
-
-
-                    <div id="description-header">
-
-                        <div class="skeleton-loader">
-                            <div id="title-box">
-                                <h1 class="title" id="title-text">
-                                    I'm Alex.
-
-                                </h1>
-                            </div>
-
-                            <br>
-                            <p class="desc" id="sub-text-desc">
-                                 <b> @ Ngee Ann Polytechnic </b>
-                            </p>
-                        </div>
-
-
-
-
-
-                        <div id="social-media">
-
-                            <div class="container skeleton-loader">
-                                <div class="row no-gutters">
-                                    <div class="col-sm">
-                                        <span id="social-media-header">Social Media</span>
-                                    </div>
-                                    <div class="col-sm social-icons">
-                                        <a target="_blank" href="https://discord.com/channels/@me"><img src="images/discord_black_24dp.svg" class="social-icon">   </a>
-
-                                        <br>
-                                        <a target="_blank" href="https://github.com/Aster0"><img src="images/GitHub-Mark.png" class="social-icon"></a>
-
-                                        <br>
-                                        <a target="_blank" href="https://www.linkedin.com/in/"><img src="images/linkedin.png" class="social-icon"></a>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-
-
-
-
-
-
-
-                    </div>
+<body>
+  <div id="basicLayout">
+    <!-- Content Section -->
+    <main class="content">
+      <div id="content" onclick="void(0);">
+        <div class="ui-kit-root">
+          <div class="body-wrap community-page dashboard-page">
+            <!-- Mobile Navbar -->
+            <div class="theme-m new-design logged-user">
+              <div class="mobile-navbar">
+                <div class="mobile-navbar-menu-wrap">
+                  <button class="ui-btn ui-btn-normal ui-btn-plain menu-handle">
+                    <div class="ui-content align-icon-right"></div>
+                  </button>
                 </div>
-                <div class="col-sm">
-
-                    <div class="bg" id="image-header1" style="opacity:0%">
-
-
-                    </div>
-
-
-                    <div class="image-load" id="image-load-spinner">
-                        <div class="spinner-border" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </div>
-
-                    <div id="copy-right-header"><span class="skeleton-loader">© Website made by Alex</span></div>
-
-
-
+                <div class="mobile-navbar-logo">
+                  <a href="/dashboard">
+                    <img class="logo-img" src="https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5ch" alt="HackerRank Logo">
+                  </a>
                 </div>
+                <div class="mobile-navbar-btns nav-buttons theme-m-section">
+                  <div class="dropdown message-dropdown notify-dropdown theme-m-content">
+                    <button data-analytics="NavBarMessageIcon" aria-haspopup="menu" class="dropdown-handle cursor nav link hr nav messages link stripped-button">
+                      <i class="dropdown-icon ul-icon-message"></i>
+                    </button>
+                  </div>
+                  <div class="dropdown notification-dropdown notify-dropdown theme-m-content">
+                    <button data-analytics="NavBarNotificationsIcon" aria-haspopup="true" aria-expanded="false" class="dropdown-handle cursor nav_link hr_nav_notifications_link stripped-button">
+                      <i class="dropdown-icon ui-icon-notification"></i>
+                      <span class="indicator number indicator hr_notifications_count">2</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
+              <!-- Header and Breadcrumbs -->
+              <header class="community-header-breadcrumb">
+                <div class="container">
+                  <div class="d-flex justify-content-between align-items-center content-header-wrapper">
+                    <div class="community-header-breadcrumb-items">
+                      <div class="page-label-wrapper text headline">
+                        <h1 class="page-label">Learn Programming Skills</h1>
+                      </div>
+                    </div>
+                    <div class="community-header-aside"></div>
+                  </div>
+                </div>
+              </header>
+
+              <!-- Community Content Section -->
+              <div class="community-content">
+                <div class="dashboard-v2 container">
+                  <div class="dashboard-section-header">
+                    <h2 class="text-para-headline bold dashboard-section-title">Your Preparation</h2>
+                  </div>
+
+                  <div class="dashboard-section-grid">
+                    <div class="skill-progress-card card-box">
+                      <div class="ui-card ui-layer-3 active-card">
+                        <h3 class="ui-title text-sec-headline-xs">Prepare by Topics</h3>
+                        <div class="card-content">
+                          <h3 class="base-card-title" title="Java" id="base-card-1">Java</h3>
+                          <div class="base-card-detail text-content">
+                            <div class="skill-progress-bar">
+                              <div class="ui-progress-bar progress-bar theme-m">
+                                <div class="progress-filler" style="width: 80%;"></div>
+                              </div>
+                            </div>
+                            <div class="progress-count text-content">
+                              <span class="percentage">80%</span>
+                              <span class="points-left">(5 points to next star)</span>
+                            </div>
+                          </div>
+                          <a class="ui-btn ui-btn-normal ui-btn-large ul-btn-primary ui-btn-link" href="/domains/java?filters%5Bstatus%5D%5B%5D=unsolved&badge_type=java">
+                            <span class="ui-text" aria-hidden="false">Continue Preparation</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Additional Sections (e.g. dashboard topics, prep kits) -->
+                  <section class="dashboard-section dashboard-topics" id="topics"></section>
+                  <section class="dashboard-section dashboard-prep-kits"></section>
+                </div>
+              </div>
             </div>
-
-            <a id="about-me"></a>
-
-            <div id="scroll-div" class="skeleton-loader">
-
-
-                <span id="scroll">
-        
-                            <img src="images/keyboard_arrow_down_black_24dp.svg" id="scroll-arrow">
-                            Scroll down to know more!
-                </span>
-
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <a id="test"></a>
-
-
-    <div class="second_section">
-
-
-
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-sm" id="about-me-header-div">
-                    <span class="about-me-header">ABOUT ME</span>
-
-
-                    <img class="section-icon" src="images/medal.jpg">
-                </div>
-
-                <div class="col-sm">
-
-                    <div class="section-box skeleton-loader2">
-                        <img src="images/speech.svg" id="about-me-speech-icon" class="opac-icons3">
-
-                        <b>👋 <span id="about-me-greet">Nice to meet you!</span></b>
-                        <br>
-                        <br> I am Alex, and I live in Singapore!
-                        <br>
-                        <br> I have started programming at a very young age, at around 12 years old. So, you can see the passion I have for programming!
-
-                        <br>
-                        <br>👨‍💻 With years of self-taught experience and an insatiable thirst for programming knowledge, I am constantly striving to elevate my skills to newer heights. My passion for programming has been recognized through various exceptional
-                        achievements.
-
-
-
-
-                        <br> <br> 🌟 I am also a prospective <a href="https://www.nus.edu.sg/" target="_blank">National University of Singapore (NUS)</a> Computer Science student.
-
-                        <br>
-                        <br>
-                        <i>P.S. Alex is my online name.</i>
-
-
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <br> <br>
-
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-sm achievements-container" id="about-me-header-div">
-                    <span class="about-me-header">ACHIEVEMENTS</span>
-
-
-                    <img class="achievement-icon section-icon" src="images/alexprofile.jpg">
-                </div>
-
-                <div class="col-sm">
-
-                    <div class="section-box skeleton-loader2">
-
-                        <span id="achievements-header">🥇 &nbsp;
-                            These are some of the awards that I have achieved (but not limited to);</span>
-                        <br>
-                        <br>
-
-                        <div class="achievement-box">
-
-                            <div class="container achievement-text">
-                                <div class="row achievement-row">
-                                    <div class="col-sm">
-                                        <b class="achievement-date achievement-color">2023</b>
-                                    </div>
-                                    <div class="col-sm">
-                                        <b class="achievement-color">Temasek Polytechnic</b> <br>Valedictorian <br>Class 2023 <br>
-
-                                        <p class="achievement-info">Represented the Graduation Class 2023 as the Valedictorian.</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="achievement-box">
-
-                            <div class="container achievement-text">
-                                <div class="row achievement-row">
-                                    <div class="col-sm">
-                                        <b class="achievement-date achievement-color">2021</b>
-
-                                    </div>
-                                    <div class="col-sm">
-                                        <b class="achievement-color">WorldSkills Singapore</b> <br>Mobile Development <br>Gold Medalist <br>
-
-                                        <p class="achievement-info">WorldSkills Singapore is a national competition, dubbed as a youth Olympics for technical skills. <br><br>During the competition, competitors have no internet access and have to carry out a 3 days competition.</p>
-
-                                        <span class="material-symbols-outlined achievement-important">
-                                            award_star
-                                         </span>
-
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="achievement-box">
-
-                            <div class="container achievement-text">
-                                <div class="row achievement-row">
-                                    <div class="col-sm">
-                                        <b class="achievement-date achievement-color">2019</b>
-                                    </div>
-                                    <div class="col-sm">
-                                        <b class="achievement-color">Lee Kuan Yew Technology Award</b> <br>
-
-                                        <p class="achievement-info">Created an IoT Temperature Management system for schools w/ attendance taking.
-                                            <br><br>*This was pre-covid.
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <span id="achievements-footer">You can find more awards on my <a target="_blank" id="linkedin-link" href="https://www.linkedin.com/in/">LinkedIn</a>.</span>
-
-
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <br><br>
-
-
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-sm" id="about-me-header-div">
-                    <span class="about-me-header">MY SKILLS</span>
-
-
-                    <img class="section-icon" src="images/avatar0.jpg">
-                </div>
-                <div class="col-sm">
-
-                    <div class="section-box skill-selection-box skeleton-loader2">
-
-
-                        <div class="skill-header">
-                            <span>Programming Languages</span>
-                        </div>
-
-
-
-                        <div class="skill-set">
-                            <div class="container no-gutters">
-                                <div class="row">
-                                    <div class="col-sm skill-set-title">
-                                        <img src="images/java.svg" class="skill-set-icons opac-icons2">
-                                        <span class="skill-set-name">Java</span>
-                                    </div>
-                                    <div class="col-sm skill-set-progress">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="skill-set">
-                            <div class="container no-gutters">
-                                <div class="row">
-                                    <div class="col-sm skill-set-title">
-                                        <img src="images/sharp.svg" class="skill-set-icons opac-icons2">
-
-                                        <span class="skill-set-name">C#</span>
-                                    </div>
-
-                                    <div class="col-sm skill-set-progress">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="skill-set">
-                            <div class="container no-gutters">
-                                <div class="row">
-                                    <div class="col-sm skill-set-title">
-                                        <img src="images/python.svg" class="skill-set-icons opac-icons2">
-
-                                        <span class="skill-set-name">Python</span>
-                                    </div>
-
-                                    <div class="col-sm skill-set-progress">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                        </div>
-
-                        <div class="skill-set">
-                            <div class="container no-gutters">
-                                <div class="row">
-                                    <div class="col-sm skill-set-title">
-                                        <img src="images/flutter.svg" class="skill-set-icons opac-icons2">
-
-                                        <span class="skill-set-name">Flutter</span>
-                                    </div>
-
-                                    <div class="col-sm skill-set-progress">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                        </div>
-
-
-                        <br> I am well versed with most Object Orientated Programming (OOP) languages! (Java, C#, etc)
-
-
-                        <br>
-                        <br>
-
-                        <div class="skill-header" id="other-skill-header">
-                            <span>Other Skills</span>
-                        </div>
-
-
-                        <div id="other-skills-container">
-                            <div class="other-skills-row">
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                        groups_2
-                                    </span>
-                                    <br>
-                                    <span class="other-skills-text">Collaboration</span>
-                                </div>
-
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                        lightbulb
-                                    </span>
-                                    <br>
-                                    <span class="other-skills-text">Problem Solver</span>
-                                </div>
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                    emoji_objects
-                                </span>
-                                    <br>
-                                    <span class="other-skills-text">Creativity</span>
-                                </div>
-
-
-                            </div>
-
-                            <div class="other-skills-row">
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                        charger
-                                    </span>
-                                    <br>
-                                    <span class="other-skills-text">Adaptability</span>
-                                </div>
-
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                        sentiment_satisfied
-                                    </span>
-                                    <br>
-                                    <span class="other-skills-text">Responsibility</span>
-                                </div>
-
-                                <div class="other-skill-box">
-
-                                    <span class="material-symbols-outlined skill-icon">
-                                    social_leaderboard
-                                </span>
-                                    <br>
-                                    <span class="other-skills-text">Leadership</span>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    </div>
-
-
-
-
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <a id="portfolio"></a>
-
-    <div id="background-image-2"></div>
-
-    <br>
-    <span id="scroll-normal">
-
-                    <img src="images/keyboard_arrow_down_black_24dp.svg" id="scroll-arrow">
-                    Still Interested?!
-        </span>
-
-
-
-    </div>
-
-
-
-    <div class="third-section">
-
-        <div id="portfolio-div">
-
-
-
-            <div id="portfolio-header-div">
-                <span id="portfolio-header">Portfolio</span>
-                <br> You can find more details about these projects on my <a target="_blank" id="linkedin-link" href="https://www.linkedin.com/in/">LinkedIn</a>!</div>
-
-        </div>
-
-
-        <div id="portfolio-body-div">
-
-
-
-        </div>
-
-
-    </div>
-
-
-    <br>
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
-
-<script src="js/w3.js"></script>
-<script>
-    //to bring in other HTML on the fly into this page
-    w3.includeHTML();
-</script>
-
-</html>
+          </div>
+
+          <!-- Footer -->
+          <footer class="community-footer">
+            <ul class="footer-links">
+              <li class="link-item">
+                <a target="_blank" class="footer-link blog" data-analytics="FooterLinkBlog" href="/blog">Blog</a>
+              </li>
+              <li class="link-item">
+                <a target="_blank" class="footer-link scoring" data-analytics="FooterLinkScoring" href="/scoring">Scoring</a>
+              </li>
+              <li class="link-item">
+                <a target="_blank" class="footer-link" data-analytics="FooterLinkAboutUs" href="/about-us">About Us</a>
+              </li>
+              <li class="link-item">
+                <a target="_blank" class="footer-link" data-analytics="FooterLinkSupport" href="/support">Support</a>
+              </li>
+              <li class="link-item">
+                <a target="_blank" class="footer-link" data-analytics="FooterLinkCareers" href="https://www.hackerrank.com/careers">Careers</a>
+              </li>
+              <li class="link-item">
