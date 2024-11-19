@@ -3,211 +3,512 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>Basic Layout</title>
   <style>
+    /* Global body styling */
+    body {
+      background-color: #000;  /* Set background to black */
+      color: #fff;  /* Set text color to white */
+      font-family: Satoshi, "Open Sans", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+
     /* Styles for the basic layout */
     #basicLayout {
       height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-    /* Content section styling */
-    .content {
-      background: linear-gradient(to right, #bbb, #fff);
-      flex-grow: 1;
-      padding: 16px;
-    }
-    /* Footer section styling */
-    .footer {
-      background-color: #efefef;
-      padding: 8px;
-      text-align: center;
+      background-color: #000;  /* Set layout background to black */
     }
 
-    /* New JavaScript-triggered Theme */
-    body[data-theme='dark'] {
-      background-color: #121212;
+    /* Top bar styles */
+    .top-bar {
+      display: flex;
+      justify-content: space-between; /* Make sure elements are spaced properly */
+      align-items: center;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #0e1426;  /* Dark background for top bar */
+      color: #fff;
+      box-sizing: border-box;
+      position: fixed; /* Keeps the top bar fixed at the top */
+      top: 0;
+      left: 0;
+      height: 50px; /* Set fixed height for the top bar */
+      z-index: 1000;
+    }
+
+    /* Logo / "Acool_coder" text */
+    .top-bar .logo-text {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: font-size 0.3s ease; /* Smooth transition for logo size */
+      text-align: center;
       color: #fff;
     }
 
-    /* Add your requested styles below */
-    .ui-card.ui-layer-3.active-card {
-      background-color: #1F202A;
-      padding: 20px 70px 20px 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-
+    /* Each of the span items (Prepare, Certify, Feedback) */
+    .top-bar span {
+      margin-right: 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    h2.ui-title.text-sec-headline-xs {
-      color: #C9C9CF;
-      font-size: 12px;
-      font-family: Satoshi, "Open Sans", Arial, sans-serif;
-      margin: 0px 0px 15px;
-
-    }
-
-    h3#base-card-1.base-card-title {
-      color: #D6D7E4;
-      font-size: 22px;
-      font-family: Satoshi, "Open Sans", sans-serif;
-      margin: 0px 0px 15px;
-    }
-
-    div.progress-filler {
-      background-color: #F7F8FD;
-    }
-
-    span.percentage {
-      color: #F7F8FD;
-      font-size: 13px;
-      font-family: Satoshi, "Open Sans", Arial, sans-serif;
-    }
-
-    span.points-left {
-      color: #C1C2D6;
-      font-size: 13px;
-      font-family: Satoshi, "Open Sans", sans-serif;
-    }
-
-    a#base-card-1.link.ui-btn.ui-btn-normal.ui-btn-large.ul-btn-primary.ui-btn-link {
-      background-color: #20D761;
-      margin: 15px 0px 0px;
+    /* Search input */
+    .top-bar input {
+      margin-left: auto;
       padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: #fff;
+      width: 200px;
+    }
+
+    /* Content Section */
+    .content {
+      background: none;  /* Remove the grey background */
+      flex-grow: 1;
+      padding: 16px;
+      margin-top: 60px;  /* Adjust for fixed top bar */
+      overflow-y: auto;  /* Enable vertical scrolling if content overflows */
+    }
+
+    /* Content Container for smaller screens */
+    .content-container {
+      background-color: #14171F;  /* Darker than #1F202A */
+      padding: 20px 80px 30px 30px;
       border-radius: 8px;
-      text-decoration: none;
+      margin: 20px 0;
+      width: calc(100% - 40px); /* Make the container responsive */
+      box-sizing: border-box; /* Include padding in the element's total width */
+      max-width: 1200px; /* Prevent the container from becoming too wide on large screens */
+      margin-left: auto; /* Center align on larger screens */
+      margin-right: auto; /* Center align on larger screens */
     }
 
-    span.ui-text {
-      color: #121418;
+    /* Footer section styling */
+    .footer {
+      background-color: #333;  /* Dark footer background */
+      padding: 8px;
+      text-align: center;
+      color: #fff;  /* Set footer text color to white */
+    }
+
+    /* Progress bar styles */
+    .skill-progress-bar {
+      width: 100%;
+      background-color: #333;
+      border-radius: 4px;
+      height: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-filler {
+      background-color: #4caf50;  /* Green for progress */
+      height: 100%;
+      transition: width 0.5s ease; /* Smooth width transition */
+    }
+
+    .progress-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .percentage {
+      font-weight: bold;
       font-size: 14px;
-      font-family: Satoshi, "Open Sans", sans-serif;
-
     }
 
-    /* Ensure responsiveness */
+    .points-left {
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    /* Media Query for smaller screens */
     @media (max-width: 768px) {
-      .ui-card.ui-layer-3.active-card {
-        padding: 20px 20px;
+      /* Hide the top bar content */
+      .top-bar span,
+      .top-bar input {
+        display: none;
       }
 
-      h2.ui-title.text-sec-headline-xs,
-      h3#base-card-1.base-card-title {
-        font-size: 14px;
+      /* Center "Acool_coder" logo at the top center */
+      .top-bar .logo-text {
+        display: block;
+        font-size: 36px; /* Larger font size */
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        position: absolute; /* Position logo absolutely inside the top bar */
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 1001; /* Keep logo above other content */
       }
 
-      a#base-card-1.link.ui-btn.ui-btn-normal.ui-btn-large.ul-btn-primary.ui-btn-link {
-        padding: 10px;
+      /* Adjust padding for smaller screens */
+      .content-container {
+        padding: 20px 40px 30px 30px; /* Reduce side padding */
+      }
+    }
+
+    /* Media Query for medium to large screens */
+    @media (min-width: 769px) {
+      /* Adjust the logo size to match "Prepare" text */
+      .top-bar .logo-text {
+        font-size: 16px; /* Same size as the "Prepare" text */
+        margin-right: 20px;
+      }
+
+      /* Show the top bar content on larger screens */
+      .top-bar span,
+      .top-bar input {
+        display: inline-block;
+      }
+    }
+
+    /* Media Query for extra large screens */
+    @media (min-width: 1024px) {
+      .top-bar .logo-text {
+        font-size: 16px; /* Match "Prepare" size for large screens */
       }
     }
   </style>
 </head>
 <body>
   <div id="basicLayout">
+    <!-- Top Bar Section -->
+    <div class="top-bar">
+      <!-- "Acool_coder" text at the left -->
+      <span class="logo-text">Acool_coder</span>
+      <!-- "Prepare", "Certify", and "Feedback" spans -->
+      <span>Prepare</span>
+      <span>Certify</span>
+      <span>Feedback</span>
+      <!-- Search Input -->
+      <input type="text" autocomplete="off" class="ac-input" placeholder="Search" value="">
+    </div>
+
     <!-- Content Section -->
     <main class="content">
-      <div id="content" onclick="void(0);">
-        <div class="ui-kit-root">
-          <div class="body-wrap community-page dashboard-page">
-            <!-- Mobile Navbar -->
-            <div class="theme-m new-design logged-user">
-              <div class="mobile-navbar">
-                <div class="mobile-navbar-menu-wrap">
-                  <button class="ui-btn ui-btn-normal ui-btn-plain menu-handle">
-                    <div class="ui-content align-icon-right"></div>
-                  </button>
-                </div>
-                <div class="mobile-navbar-logo">
-                  <a href="/dashboard">
-                    <img class="logo-img" src="https://hrcdn.net/fcore/assets/brand/logo-new-white-green-a5ch" alt="HackerRank Logo">
+      <!-- "Your Preparation" outside the content-container -->
+      <div class="dashboard-v2 container">
+        <div class="dashboard-section-header">
+          <h2 class="text-para-headline bold dashboard-section-title">Your Preparation</h2>
+        </div>
+      </div>
+
+      <!-- Content Container (keeps only the "Prepare by Topics", "Java" progress inside) -->
+      <div class="content-container">
+        <div class="dashboard-v2 container">
+          <div class="dashboard-section-header">
+          
+          </div>
+
+          <div class="dashboard-section-grid">
+            <div class="skill-progress-card card-box">
+              <div class="ui-card ui-layer-3 active-card">
+                <h3 class="ui-title text-sec-headline-xs">Prepare by Topics</h3>
+                <div class="card-content">
+                  <h3 class="base-card-title" title="Java" id="base-card-1">Java</h3>
+                  <div class="base-card-detail text-content">
+                    <div class="skill-progress-bar">
+                      <div class="ui-progress-bar progress-bar theme-m">
+                        <div class="progress-filler" style="width: 80%;"></div>
+                      </div>
+                    </div>
+                    <div class="progress-count text-content">
+                      <span class="percentage">80%</span>
+                      <span class="points-left">(5 points to next star)</span>
+                    </div>
+                  </div>
+                  <a class="ui-btn ui-btn-normal ui-btn-large ul-btn-primary ui-btn-link" href="/domains/java?filters%5Bstatus%5D%5B%5D=unsolved&badge_type=java">
+                    <span class="ui-text" aria-hidden="false">Continue Preparation</span>
                   </a>
                 </div>
-                <div class="mobile-navbar-btns nav-buttons theme-m-section">
-                  <div class="dropdown message-dropdown notify-dropdown theme-m-content">
-                    <button data-analytics="NavBarMessageIcon" aria-haspopup="menu" class="dropdown-handle cursor nav link hr nav messages link stripped-button">
-                      <i class="dropdown-icon ul-icon-message"></i>
-                    </button>
-                  </div>
-                  <div class="dropdown notification-dropdown notify-dropdown theme-m-content">
-                    <button data-analytics="NavBarNotificationsIcon" aria-haspopup="true" aria-expanded="false" class="dropdown-handle cursor nav_link hr_nav_notifications_link stripped-button">
-                      <i class="dropdown-icon ui-icon-notification"></i>
-                      <span class="indicator number indicator hr_notifications_count">2</span>
-                    </button>
-                  </div>
-                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <!-- Header and Breadcrumbs -->
-              <header class="community-header-breadcrumb">
-                <div class="container">
-                  <div class="d-flex justify-content-between align-items-center content-header-wrapper">
-                    <div class="community-header-breadcrumb-items">
-                      <div class="page-label-wrapper text headline">
-                        <h1 class="page-label">Learn Programming Skills</h1>
+      <!-- Footer -->
+      <footer class="community-footer">
+        <ul class="footer-links">
+          <li class="link-item">
+            <a target="_blank" class="footer-link blog" data-analytics="FooterLinkBlog" href="/blog">Blog</a>
+          </li>
+          <li class="link-item">
+            <a target="_blank" class="footer-link scoring" data-analytics="FooterLinkScoring" href="/scoring">Scoring</a>
+          </li>
+          <li class="link-item">
+            <a target="_blank" class="footer-link" data-analytics="FooterLinkAboutUs" href="/about-us">About Us</a>
+          </li>
+        </ul><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Layout</title>
+  <style>
+    /* Global body styling */
+    body {
+      background-color: #000;  /* Set background to black */
+      color: #fff;  /* Set text color to white */
+      font-family: Satoshi, "Open Sans", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+
+    /* Styles for the basic layout */
+    #basicLayout {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #000;  /* Set layout background to black */
+    }
+
+    /* Top bar styles */
+    .top-bar {
+      display: flex;
+      justify-content: space-between; /* Make sure elements are spaced properly */
+      align-items: center;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #0e1426;  /* Dark background for top bar */
+      color: #fff;
+      box-sizing: border-box;
+      position: fixed; /* Keeps the top bar fixed at the top */
+      top: 0;
+      left: 0;
+      height: 50px; /* Set fixed height for the top bar */
+      z-index: 1000;
+    }
+
+    /* Logo / "Acool_coder" text */
+    .top-bar .logo-text {
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: font-size 0.3s ease; /* Smooth transition for logo size */
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Each of the span items (Prepare, Certify, Feedback) */
+    .top-bar span {
+      margin-right: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Search input */
+    .top-bar input {
+      margin-left: auto;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: #fff;
+      width: 200px;
+    }
+
+    /* Content Section */
+    .content {
+      background: none;  /* Remove the grey background */
+      flex-grow: 1;
+      padding: 16px;
+      margin-top: 60px;  /* Adjust for fixed top bar */
+      overflow-y: auto;  /* Enable vertical scrolling if content overflows */
+    }
+
+    /* Content Container for smaller screens */
+    .content-container {
+      padding: 20px 80px 30px 30px;
+      border-radius: 8px;
+      margin: 20px 0;
+      width: calc(100% - 40px); /* Make the container responsive */
+      box-sizing: border-box; /* Include padding in the element's total width */
+      max-width: 1200px; /* Prevent the container from becoming too wide on large screens */
+      margin-left: auto; /* Center align on larger screens */
+      margin-right: auto; /* Center align on larger screens */
+    }
+
+    /* Footer section styling */
+    .footer {
+      background-color: #333;  /* Dark footer background */
+      padding: 8px;
+      text-align: center;
+      color: #fff;  /* Set footer text color to white */
+    }
+
+    /* Progress bar styles */
+    .skill-progress-bar {
+      width: 100%;
+      background-color: #333;
+      border-radius: 4px;
+      height: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-filler {
+      background-color: #4caf50;  /* Green for progress */
+      height: 100%;
+      transition: width 0.5s ease; /* Smooth width transition */
+    }
+
+    .progress-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .percentage {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .points-left {
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+      /* Hide the top bar content */
+      .top-bar span,
+      .top-bar input {
+        display: none;
+      }
+
+      /* Center "Acool_coder" logo at the top center */
+      .top-bar .logo-text {
+        display: block;
+        font-size: 36px; /* Larger font size */
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        position: absolute; /* Position logo absolutely inside the top bar */
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Center horizontally */
+        z-index: 1001; /* Keep logo above other content */
+      }
+
+      /* Adjust padding for smaller screens */
+      .content-container {
+        padding: 20px 40px 30px 30px; /* Reduce side padding */
+      }
+    }
+
+    /* Media Query for medium to large screens */
+    @media (min-width: 769px) {
+      /* Adjust the logo size to match "Prepare" text */
+      .top-bar .logo-text {
+        font-size: 16px; /* Same size as the "Prepare" text */
+        margin-right: 20px;
+      }
+
+      /* Show the top bar content on larger screens */
+      .top-bar span,
+      .top-bar input {
+        display: inline-block;
+      }
+    }
+
+    /* Media Query for extra large screens */
+    @media (min-width: 1024px) {
+      .top-bar .logo-text {
+        font-size: 16px; /* Match "Prepare" size for large screens */
+      }
+    }
+
+    /* Remove underline from the button link */
+    .ui-btn-link {
+      text-decoration: none;  /* Remove underline */
+    }
+
+    /* New specific class for the container around the button */
+    .continue-prep-container {
+      background-color: #20D761;  /* Set background color to green */
+      padding: 20px;  /* Optional padding */
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="basicLayout">
+    <!-- Top Bar Section -->
+    <div class="top-bar">
+      <!-- "Acool_coder" text at the left -->
+      <span class="logo-text">Acool_coder</span>
+      <!-- "Prepare", "Certify", and "Feedback" spans -->
+      <span>Prepare</span>
+      <span>Certify</span>
+      <span>Feedback</span>
+      <!-- Search Input -->
+      <input type="text" autocomplete="off" class="ac-input" placeholder="Search" value="">
+    </div>
+
+    <!-- Content Section -->
+    <main class="content">
+      <!-- "Your Preparation" outside the content-container -->
+      <div class="dashboard-v2 container">
+        <div class="dashboard-section-header">
+          <h2 class="text-para-headline bold dashboard-section-title">Your Preparation</h2>
+        </div>
+      </div>
+
+      <!-- Content Container (keeps only the "Prepare by Topics", "Java" progress inside) -->
+      <div class="content-container">
+        <div class="dashboard-v2 container">
+          <div class="dashboard-section-header">
+          
+          </div>
+
+          <div class="dashboard-section-grid">
+            <div class="skill-progress-card card-box">
+              <div class="ui-card ui-layer-3 active-card">
+                <h3 class="ui-title text-sec-headline-xs">Prepare by Topics</h3>
+                <div class="card-content">
+                  <h3 class="base-card-title" title="Java" id="base-card-1">Java</h3>
+                  <div class="base-card-detail text-content">
+                    <div class="skill-progress-bar">
+                      <div class="ui-progress-bar progress-bar theme-m">
+                        <div class="progress-filler" style="width: 80%;"></div>
                       </div>
                     </div>
-                    <div class="community-header-aside"></div>
-                  </div>
-                </div>
-              </header>
-
-              <!-- Community Content Section -->
-              <div class="community-content">
-                <div class="dashboard-v2 container">
-                  <div class="dashboard-section-header">
-                    <h2 class="text-para-headline bold dashboard-section-title">Your Preparation</h2>
-                  </div>
-
-                  <div class="dashboard-section-grid">
-                    <div class="skill-progress-card card-box">
-                      <div class="ui-card ui-layer-3 active-card">
-                        <h3 class="ui-title text-sec-headline-xs">Prepare by Topics</h3>
-                        <div class="card-content">
-                          <h3 class="base-card-title" title="Java" id="base-card-1">Java</h3>
-                          <div class="base-card-detail text-content">
-                            <div class="skill-progress-bar">
-                              <div class="ui-progress-bar progress-bar theme-m">
-                                <div class="progress-filler" style="width: 80%;"></div>
-                              </div>
-                            </div>
-                            <div class="progress-count text-content">
-                              <span class="percentage">80%</span>
-                              <span class="points-left">(5 points to next star)</span>
-                            </div>
-                          </div>
-                          <a class="ui-btn ui-btn-normal ui-btn-large ul-btn-primary ui-btn-link" href="/domains/java?filters%5Bstatus%5D%5B%5D=unsolved&badge_type=java">
-                            <span class="ui-text" aria-hidden="false">Continue Preparation</span>
-                          </a>
-                        </div>
-                      </div>
+                    <div class="progress-count text-content">
+                      <span class="percentage">80%</span>
+                      <span class="points-left">(5 points to next star)</span>
                     </div>
                   </div>
-
-                  <!-- Additional Sections (e.g. dashboard topics, prep kits) -->
-                  <section class="dashboard-section dashboard-topics" id="topics"></section>
-                  <section class="dashboard-section dashboard-prep-kits"></section>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Footer -->
-          <footer class="community-footer">
-            <ul class="footer-links">
-              <li class="link-item">
-                <a target="_blank" class="footer-link blog" data-analytics="FooterLinkBlog" href="/blog">Blog</a>
-              </li>
-              <li class="link-item">
-                <a target="_blank" class="footer-link scoring" data-analytics="FooterLinkScoring" href="/scoring">Scoring</a>
-              </li>
-              <li class="link-item">
-                <a target="_blank" class="footer-link" data-analytics="FooterLinkAboutUs" href="/about-us">About Us</a>
-              </li>
-              <li class="link-item">
-                <a target="_blank" class="footer-link" data-analytics="FooterLinkSupport" href="/support">Support</a>
-              </li>
-              <li class="link-item">
-                <a target="_blank" class="footer-link" data-analytics="FooterLinkCareers" href="https://www.hackerrank.com/careers">Careers</a>
-              </li>
-              <li class="link-item">
+          <!-- Container for the "Continue Preparation" button -->
+          <div class="continue-prep-container">
+            <a class="ui-btn ui-btn-normal ui-btn-large ul-btn-primary ui-btn-link" href="/domains/java?filters%5Bstatus%5D%5B%5D=unsolved&badge_type=java">
+              <span class="ui-text" aria-hidden="false">
+
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
